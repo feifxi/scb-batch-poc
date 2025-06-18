@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class BatchService {
     private final UserRepository userRepository;
 
-    @Value("${DB_URL:localhost:3306}")
+    @Value("${DB_URL}")
     private String INJECT_DB_URL;
 
     @Autowired
@@ -33,17 +33,9 @@ public class BatchService {
         User user1 = new User();
         user1.setName("Fei");
         user1.setEmail("example" + date + "@gmail.com");
-        User user2 = new User();
-        user2.setName("Ter");
-        user2.setEmail("example" + date + "@gmail.com");
-        User user3 = new User();
-        user3.setName("CD");
-        user3.setEmail("example" + date + "@gmail.com");
 
         // Process with DB
         userRepository.save(user1);
-        userRepository.save(user2);
-        userRepository.save(user3);
 
         for (User u : userRepository.findAll()) {
             System.out.println("User : " + u.getName());
