@@ -20,7 +20,7 @@ public class BatchService {
     public void processBatch(LocalDate date) {
         Account acc = new Account();
         acc.setUsername("Chanombude");
-        acc.setEmail("chanombude@gmail.com");
+        acc.setEmail("chanombude.handsome@gmail.com");
         acc.setCreateAt(date);
 
         // Process with DB
