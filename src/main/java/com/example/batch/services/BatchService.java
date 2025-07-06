@@ -1,10 +1,9 @@
 package com.example.batch.services;
 
 
-import com.example.batch.entities.User;
+import com.example.batch.entities.Account;
 import com.example.batch.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -13,32 +12,23 @@ import java.time.LocalDate;
 public class BatchService {
     private final UserRepository userRepository;
 
-    @Value("${DB_URL}")
-    private String INJECT_DB_URL;
-
     @Autowired
     public BatchService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     public void processBatch(LocalDate date) {
-        System.out.println("✅ Running job for date: " + date);
-
-        // Checking ENV
-        String DB_URL = System.getenv("DB_URL");
-        System.out.println("DB_RL ENV: " + DB_URL);
-
-        System.out.println("INJECTED DB_URL ENV: " + INJECT_DB_URL);
-
-        User user1 = new User();
-        user1.setName("Fei");
-        user1.setEmail("example" + date + "@gmail.com");
+        Account acc = new Account();
+        acc.setUsername("Chanombude");
+        acc.setEmail("chanombude@gmail.com");
+        acc.setCreateAt(date);
 
         // Process with DB
-        userRepository.save(user1);
+        userRepository.save(acc);
 
-        for (User u : userRepository.findAll()) {
-            System.out.println("User : " + u.getName());
+        System.out.println("== List Accounts ==");
+        for (Account account : userRepository.findAll()) {
+            System.out.printf("Account : %s, at : %s\n", account.getUsername(), account.getCreateAt());
         }
     }
 }

@@ -10,9 +10,5 @@ public class BatchApplication {
 	}
 }
 
-
-// Dev run by maven
-// .\mvnw.cmd spring-boot:run -D"spring-boot.run.arguments=inputDate=2025-06-18"
-
 // Building run :
-// java -jar myapp.jar inputDate=2025-06-18
+// java -jar myapp.jar 2025-06-18

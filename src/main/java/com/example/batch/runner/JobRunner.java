@@ -3,7 +3,6 @@ package com.example.batch.runner;
 import com.example.batch.services.BatchService;
 import com.example.batch.utils.DateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -33,5 +32,6 @@ public class JobRunner implements CommandLineRunner {
 
         // Running batch Service
         batchService.processBatch(date);
+        System.out.println("======= End Batch ========");
     }
 }
